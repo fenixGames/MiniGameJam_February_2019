@@ -12,7 +12,7 @@ SET(
 		src/exceptions.cpp
 		src/scene.cpp
 		src/viewport.cpp
-		src/event_handler.cpp
+		src/events/event_handler.cpp
 		src/score.cpp
 		src/raccoon.cpp
 		src/slot.cpp

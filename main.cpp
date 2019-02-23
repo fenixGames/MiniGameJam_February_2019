@@ -3,7 +3,7 @@
 #include <window.hpp>
 #include <scene.hpp>
 #include <viewport.hpp>
-#include <event_handler.hpp>
+#include <events/event_handler.hpp>
 #include <node.hpp>
 #include <score.hpp>
 #include <raccoon.hpp>

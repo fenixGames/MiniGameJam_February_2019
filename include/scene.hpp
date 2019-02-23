@@ -10,7 +10,7 @@
 #include <SDL.h>
 
 #include <node.hpp>
-#include <event_handler.hpp>
+#include <events/event_handler.hpp>
 #include <viewport.hpp>
 
 class Scene {

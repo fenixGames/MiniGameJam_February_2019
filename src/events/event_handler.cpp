@@ -1,5 +1,5 @@
 #include <stdexcept>
-#include <event_handler.hpp>
+#include <events/event_handler.hpp>
 #include <exceptions.hpp>
 
 EventHandler::EventHandler(SDL_EventType eventType)
