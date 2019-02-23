@@ -9,8 +9,8 @@
 
 class Point {
 public:
-	std::atomic<float> x;
-	std::atomic<float> y;
+	float x;
+	float y;
 
 	Point();
 	Point(float, float);
@@ -23,8 +23,8 @@ public:
 
 class Size {
 public:
-	std::atomic<int> width;
-	std::atomic<int> height;
+	int width;
+	int height;
 
 	Size();
 	Size(int, int);

@@ -4,8 +4,8 @@ Point::Point(): Point(0.0, 0.0) {
 }
 
 Point::Point(float x, float y) {
-	this->x.exchange(x);
-	this->y.exchange(y);
+	this->x = x;
+	this->y = y;
 }
 
 Point::Point(const Point& point): Point(point.x, point.y) {
@@ -24,8 +24,8 @@ Point::operator-(const Point& point) {
 Point
 Point::operator=(const Point& point) {
 	if (this != &point) {
-		this->x.exchange(point.x);
-		this->y.exchange(point.y);
+		this->x = point.x;
+		this->y = point.y;
 	}
 	return *this;
 }
@@ -37,15 +37,15 @@ Size::Size(const Size& size) : Size(size.width, size.height) {
 }
 
 Size::Size(int width, int height) {
-	this->width.exchange(width);
-	this->height.exchange(height);
+	this->width = width;
+	this->height = height;
 }
 
 Size
 Size::operator=(const Size& size) {
 	if (this != &size) {
-		this->width.exchange(size.width);
-		this->height.exchange(size.height);
+		this->width = width;
+		this->height = height;
 	}
 	return *this;
 }
