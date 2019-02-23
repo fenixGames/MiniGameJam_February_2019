@@ -54,7 +54,7 @@ Window::start() {
 		if (currentScene->evController != NULL)
 			currentScene->evController->handleEvents();
 
-		SDL_Delay(200);
+		SDL_Delay(20);
 	}
 }
 
