@@ -49,6 +49,7 @@ else (WIN32)
 	find_library(SDL2_LIBRARY SDL2 PATHS "/lib" "/usr/lib" "/usr/local/lib")
 	find_library(SDL2_MAIN_LIBRARY SDL2main PATHS "/lib" "/usr/lib" "/usr/local/lib")
 	find_library(SDL2_IMAGE_LIBRARY SDL2_image PATHS "/lib" "/usr/lib" "/usr/local/lib")
+	find_library(SDL2_TTF_LIBRARY SDL2_ttf PATHS "/lib" "/usr/lib" "/usr/local/lib")
 
 endif (WIN32)
 
