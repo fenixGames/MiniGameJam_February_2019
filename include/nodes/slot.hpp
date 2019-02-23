@@ -1,9 +1,9 @@
 #ifndef SLOT_HPP
 #define SLOT_HPP
 
-#include <nodes/node.hpp>
+#include <nodes/draggable_node.hpp>
 
-class Slot : public Node {
+class Slot : public DraggableNode {
 protected:
 	int cost;
 	int health;
@@ -14,6 +14,7 @@ public:
 	int getCost();
 	int getHealth();
 
+	Slot * clone();
 	virtual void act() override;
 };
 #endif
