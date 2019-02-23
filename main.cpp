@@ -2,12 +2,17 @@
 #include <scene.hpp>
 #include <viewport.hpp>
 #include <event_handler.hpp>
+#include <node.hpp>
+#include <graphics/sprite.hpp>
 
-const int SCREEN_WIDTH = 1920;
-const int SCREEN_HEIGHT = 1080;
+#define SCREEN_WIDTH 1920
+#define SCREEN_HEIGHT 1080
 
-const int MAIN_FIELD_WIDTH = 1520;
-const int MAIN_FIELD_HEIGHT = 1080;
+#define MAIN_FIELD_WIDTH 1520
+#define MAIN_FIELD_HEIGHT 1080
+
+#define UI_WIDTH	SCREEN_WIDTH - MAIN_FIELD_WIDTH
+#define UI_HEIGHT	SCREEN_HEIGHT
 
 void
 setEventHandlers(EventController * controller) {
@@ -20,14 +25,23 @@ main(int argc, char ** argv) {
 	Scene first;
 	EventController evController;
 	Viewport scene(
-		Point(0,0), 
+		Point(0,0),
 		Size(MAIN_FIELD_WIDTH, MAIN_FIELD_HEIGHT),
 		win.getRenderer());
+	Viewport ui(
+		Point(MAIN_FIELD_WIDTH, 0),
+		Size(UI_WIDTH, UI_HEIGHT),
+		win.getRenderer());
+	Node inventory(Point(MAIN_FIELD_WIDTH, 0), Size(UI_WIDTH, UI_HEIGHT));
 
+	inventory.setGraphicResource(
+		new Sprite("resources/ui.png", Color(0xFFFFFF), win.getRenderer()));
 	setEventHandlers(&evController);
 
 	first.setRenderer(win.getRenderer());
+	first.nodes.push_back(&inventory);
 	first.addViewport(&scene);
+	first.addViewport(&ui);
 	first.evController = &evController;
 
 	win.sceneList.push_back(&first);
