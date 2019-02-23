@@ -2,11 +2,10 @@
 #include <string.h>
 
 Viewport::Viewport(const Viewport& viewPort) :
-	Viewport(viewPort.viewport, viewPort.position, viewPort.renderer) {
+	Viewport(viewPort.viewport, viewPort.renderer) {
 }
 
 Viewport::Viewport(
-	const Point& position,
 	const Point& viewportPosition,
 	const Size& viewportSize,
 	SDL_Renderer * renderer) {
@@ -18,17 +17,14 @@ Viewport::Viewport(
 	viewport.h = viewportSize.height;
 
 	this->setViewport(viewport);
-	this->setPosition(position);
 	this->setRenderer(renderer);
 }
 
 Viewport::Viewport(
 	const SDL_Rect viewport,
-	const Point& position,
 	SDL_Renderer * renderer) {
 	
 	this->setViewport(viewport);
-	this->setPosition(position);
 	this->setRenderer(renderer);
 }
 
@@ -40,11 +36,6 @@ Viewport::setViewport(const SDL_Rect rect) {
 void
 Viewport::setRenderer(SDL_Renderer * renderer) {
 	this->renderer = renderer;
-}
-
-void
-Viewport::setPosition(const Point& position) {
-	this->position = position;
 }
 
 void
@@ -76,8 +67,8 @@ Viewport::isNodePrintable(Node * node) {
 	nodePosition.y = rect.y;
 
 	memcpy(&rect, &this->viewport, sizeof(SDL_Rect));
-	rect.x = (int)this->position.x;
-	rect.y = (int)this->position.y;
+	rect.x = (int)this->viewport.x;
+	rect.y = (int)this->viewport.y;
 
 	return SDL_PointInRect(&nodePosition, &rect);
 }

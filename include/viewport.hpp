@@ -24,18 +24,15 @@ private:
 	void setViewport(const SDL_Rect);
 	void setRenderer(SDL_Renderer *);
 protected:
-	Point position;
-	
 	SDL_Rect viewport;
 	SDL_Renderer * renderer;
 
 	std::mutex mtx;
 public:
-	Viewport(const SDL_Rect, const Point&, SDL_Renderer *);
-	Viewport(const Point&, const Point&, const Size&, SDL_Renderer *);
+	Viewport(const SDL_Rect, SDL_Renderer *);
+	Viewport(const Point&, const Size&, SDL_Renderer *);
 	Viewport(const Viewport&);
 
-	void setPosition(const Point&);
 	void renderNodes(std::list<Node *> *);
 };
 #endif
