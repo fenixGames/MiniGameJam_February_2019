@@ -48,6 +48,9 @@ Viewport::renderNodes(std::list<Node *> *listNodes) {
 	for (itNodes = listNodes->begin(); itNodes != listNodes->end(); itNodes++) {
 		(*itNodes)->fillDimentions(&stretchRect);
 
+		stretchRect.x -= this->viewport.x;
+		stretchRect.y -= this->viewport.y;
+
 		if (this->isNodePrintable(*itNodes)) {
 			SDL_Texture * texture = (*itNodes)->getTexture();
 			if (texture != NULL)
