@@ -57,6 +57,7 @@ Viewport::renderNodes(std::list<Node *> *listNodes) {
 			if (texture != NULL)
 				SDL_RenderCopy(renderer, texture, NULL, &stretchRect);
 			this->renderNodes((*itNodes)->getChildren());
+			(*itNodes)->act();
 		}
 	}
 	
