@@ -104,16 +104,11 @@ main(int argc, char ** argv) {
 		EventController evController;
 		Viewport scene(
 			Point(0, 0),
-			Size(MAIN_FIELD_WIDTH, MAIN_FIELD_HEIGHT),
-			win.getRenderer());
-		Viewport ui(
-			Point(MAIN_FIELD_WIDTH, 0),
-			Size(UI_WIDTH, UI_HEIGHT),
+			Size(SCREEN_WIDTH, SCREEN_HEIGHT),
 			win.getRenderer());
 
 
 		first.addViewport(&scene);
-		first.addViewport(&ui);
 		first.evController = &evController;
 
 		setEventHandlers(&evController);
