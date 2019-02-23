@@ -8,8 +8,9 @@
 class MouseDownHandler : public EventHandler {
 protected:
 	Node * node;
+	Node * finalContainer;
 public:
-	MouseDownHandler(Node *);
+	MouseDownHandler(Node *, Node * finalContainer);
 	virtual void handle(SDL_Event *);
 };
 
@@ -18,7 +19,7 @@ protected:
 	Node * node;
 	Node * finalContainer;
 public:
-	MouseUpHandler(Node *, Node *);
+	MouseUpHandler(Node *);
 	virtual void handle(SDL_Event *);
 };
 

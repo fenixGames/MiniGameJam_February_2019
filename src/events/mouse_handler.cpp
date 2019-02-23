@@ -18,9 +18,10 @@ isInRange(Node * node, SDL_MouseButtonEvent * ev) {
 	return SDL_PointInRect(&point, &rect);
 }
 
-MouseDownHandler::MouseDownHandler(Node * node) :
+MouseDownHandler::MouseDownHandler(Node * node, Node * finalContainer) :
 	EventHandler(SDL_MOUSEBUTTONDOWN) {
 	this->node = node;
+	this->finalContainer = finalContainer;
 }
 
 void
@@ -33,17 +34,18 @@ MouseDownHandler::handle(SDL_Event * ev) {
 		if (typeid(**itNodes) == typeid(Slot)) {
 			node = (Slot *)* itNodes;
 			if (isInRange(node, (SDL_MouseButtonEvent *)ev)) {
-				node->drag();
+				Slot * clone = node->clone();
+				clone->drag();
+				this->finalContainer->addChild(clone);
 			}
 		}
 	}
 }
 
 
-MouseUpHandler::MouseUpHandler(Node *initialContainer, Node * finalContainer) :
+MouseUpHandler::MouseUpHandler(Node *container) :
 	EventHandler(SDL_MOUSEBUTTONUP) {
-	this->node = initialContainer;
-	this->finalContainer = finalContainer;
+	this->node = container;
 }
 
 void
@@ -56,7 +58,7 @@ MouseUpHandler::handle(SDL_Event * ev) {
 		if (typeid(**itNodes) == typeid(Slot)) {
 			node = (Slot *)* itNodes;
 			if (node->isNodeDragged()) {
-				this->finalContainer->addChild(node->clone());
+				
 				node->release();
 			}
 		}

@@ -60,9 +60,10 @@ createInventary(Scene *scene, SDL_Renderer *renderer) {
 	Node * inventory = new Node(Point(MAIN_FIELD_WIDTH, 0), Size(UI_WIDTH, UI_HEIGHT));
 	Score * score = new Score(Point(0, 0), Size(100, 100));
 	Slot * tower = new Slot(Point(0, 100), SLOT_SIZE, 0, 100);
-	MouseDownHandler * mouseDownEventHandler = new MouseDownHandler(inventory);
-	MouseMotionHandler * mouseMotionEventHandler = new MouseMotionHandler(inventory);
-	MouseUpHandler * mouseUpEventHandler = new MouseUpHandler(inventory, scene->nodes.front());
+	Node * background = scene->nodes.front();
+	MouseDownHandler * mouseDownEventHandler = new MouseDownHandler(inventory, background);
+	MouseMotionHandler * mouseMotionEventHandler = new MouseMotionHandler(background);
+	MouseUpHandler * mouseUpEventHandler = new MouseUpHandler(background);
 
 	scene->evController->addEventHandler(mouseDownEventHandler);
 	scene->evController->addEventHandler(mouseUpEventHandler);

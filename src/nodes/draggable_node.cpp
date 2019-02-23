@@ -12,13 +12,11 @@ DraggableNode::DraggableNode(const Point& position, const Size& size) :
 void
 DraggableNode::drag() {
 	this->isDragged = true;
-	this->startPoint = this->position;
 }
 
 void
 DraggableNode::release() {
 	this->isDragged = false;
-	this->setPosition(this->startPoint);
 }
 
 bool 

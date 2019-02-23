@@ -5,7 +5,6 @@
 class DraggableNode : public Node {
 protected:
 	bool isDragged;
-	Point startPoint;
 public:
 	DraggableNode();
 	DraggableNode(const Point&, const Size&);
