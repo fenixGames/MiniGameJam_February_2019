@@ -7,14 +7,16 @@
 #include <node.hpp>
 #include <score.hpp>
 #include <raccoon.hpp>
+#include <slot.hpp>
 #include <graphics/sprite.hpp>
 #include <graphics/text.hpp>
 
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
 
-#define MAIN_FIELD_WIDTH 1520
+#define MAIN_FIELD_WIDTH 1800
 #define MAIN_FIELD_HEIGHT 1080
+#define MAIN_FIELD_SIZE	Size(MAIN_FIELD_WIDTH, MAIN_FIELD_HEIGHT)
 
 #define UI_WIDTH	SCREEN_WIDTH - MAIN_FIELD_WIDTH
 #define UI_HEIGHT	SCREEN_HEIGHT
@@ -25,13 +27,17 @@
 #define RACCOON_WIDTH	100
 #define RACCOON_HEIGHT	100
 
+#define SLOT_SIZE		Size(100, 100)
+
+#define COLOR_WHITE		Color(0xFFFFFF)
+
 void
 addRaccoons(Scene * scene, SDL_Renderer *renderer, int amount) {
 	int startX = (MAIN_FIELD_WIDTH - amount * RACCOON_WIDTH) / 2;
 	RaccoonHolder * raccoonHolder = new RaccoonHolder(
 		Point(),
 		Size(amount * RACCOON_WIDTH, RACCOON_HEIGHT));
-	Sprite * raccoonSprite = new Sprite("resources/raccoon.png", Color(0xFFFFFF), renderer);
+	Sprite * raccoonSprite = new Sprite("resources/raccoon.png", COLOR_WHITE, renderer);
 
 	for (int idx = 0; idx < amount; idx++) {
 		Node * raccoon = new Node(
@@ -49,28 +55,37 @@ setEventHandlers(EventController * controller) {
 }
 
 void
-addNodesToScene(Scene *scene, SDL_Renderer * renderer) {
+createInventary(Scene *scene, SDL_Renderer *renderer) {
 	Node * inventory = new Node(Point(MAIN_FIELD_WIDTH, 0), Size(UI_WIDTH, UI_HEIGHT));
-	Node * background = new Node(Point(0, 0), Size(MAIN_FIELD_WIDTH, MAIN_FIELD_HEIGHT));
+	Score * score = new Score(Point(0, 0), Size(100, 100));
+	Slot * tower = new Slot(Point(0, 100), SLOT_SIZE, 0, 100);
+
+	tower->setGraphicResource(new Sprite("resources/tower.png", COLOR_WHITE, renderer));
+	//	score->setGraphicResource(new Text(std::string("arial.ttf"), Color(0x0), 24, renderer));
+	inventory->setGraphicResource(
+		new Sprite("resources/ui.png", COLOR_WHITE, renderer));
+	inventory->addChild(score);
+	inventory->addChild(tower);
+	scene->nodes.push_back(inventory);
+}
+
+void
+addNodesToScene(Scene *scene, SDL_Renderer * renderer) {
+	Node * background = new Node(Point(0, 0), MAIN_FIELD_SIZE);
 	Node * turtleQueen = new Node(
 		Point(MAIN_FIELD_WIDTH / 2, MAIN_FIELD_HEIGHT - TURTLE_HEIGHT),
 		Size(TURTLE_WIDTH, TURTLE_HEIGHT));
-//	Score * score = new Score(Point(0,0), Size(100, 100));
-
-//	score->setGraphicResource(new Text(std::string("arial.ttf"), Color(0x0), 24, renderer));
+	
 	turtleQueen->setGraphicResource(
-		new Sprite("resources/queen.png", Color(0xFFFFFF), renderer));
-	inventory->setGraphicResource(
-		new Sprite("resources/ui.png", Color(0xFFFFFF), renderer));
-//	inventory->addChild(score);
-	scene->nodes.push_back(inventory);
+		new Sprite("resources/queen.png", COLOR_WHITE, renderer));
 
 	background->setGraphicResource(
-		new Sprite("resources/background.png", Color(0xFFFFFF), renderer));
+		new Sprite("resources/background.png", COLOR_WHITE, renderer));
 	scene->nodes.push_back(background);
 	scene->nodes.push_back(turtleQueen);
 
 	addRaccoons(scene, renderer, 10);
+	createInventary(scene, renderer);
 }
 
 int

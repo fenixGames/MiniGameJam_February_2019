@@ -15,6 +15,7 @@ SET(
 		src/event_handler.cpp
 		src/score.cpp
 		src/raccoon.cpp
+		src/slot.cpp
 		src/physics/geometry.cpp
 		src/graphics/sprite.cpp
 		src/graphics/text.cpp
