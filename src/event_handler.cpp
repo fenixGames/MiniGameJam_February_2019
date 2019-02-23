@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include <event_handler.hpp>
 #include <exceptions.hpp>
 
