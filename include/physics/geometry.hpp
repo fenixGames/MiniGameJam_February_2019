@@ -18,7 +18,6 @@ public:
 
 	Point operator + (const Point&);
 	Point operator - (const Point&);
-	Point operator = (const Point&);
 };
 
 class Size {
@@ -29,7 +28,5 @@ public:
 	Size();
 	Size(int, int);
 	Size(const Size&);
-
-	Size operator= (const Size&);
 };
 #endif
