@@ -9,7 +9,7 @@
 
 #include <SDL.h>
 
-#include <node.hpp>
+#include <nodes/node.hpp>
 #include <events/event_handler.hpp>
 #include <viewport.hpp>
 

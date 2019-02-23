@@ -1,4 +1,4 @@
-#include <raccoon.hpp>
+#include <nodes/raccoon.hpp>
 
 RaccoonHolder::RaccoonHolder() : RaccoonHolder(Point(), Size()) {
 }

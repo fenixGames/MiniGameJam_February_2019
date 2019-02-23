@@ -1,7 +1,7 @@
 #ifndef RACCOON_HPP
 #define RACCOON_HPP
 #include <physics/geometry.hpp>
-#include <node.hpp>
+#include <nodes/node.hpp>
 
 class RaccoonHolder : public Node {
 public:

@@ -9,7 +9,7 @@
 #include <SDL.h>
 
 #include <physics/geometry.hpp>
-#include <node.hpp>
+#include <nodes/node.hpp>
 
 /**
  * The viewport class is a representation of a "camera", it can be moved as

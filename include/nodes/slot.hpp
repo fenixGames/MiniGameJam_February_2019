@@ -1,7 +1,7 @@
 #ifndef SLOT_HPP
 #define SLOT_HPP
 
-#include <node.hpp>
+#include <nodes/node.hpp>
 
 class Slot : public Node {
 protected:

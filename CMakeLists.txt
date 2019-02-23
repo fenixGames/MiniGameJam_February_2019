@@ -7,15 +7,16 @@ set (CMAKE_CXX_STANDARD 11)
 SET(
 	SOURCES 
 		main.cpp
-		src/node.cpp
 		src/window.cpp
 		src/exceptions.cpp
 		src/scene.cpp
 		src/viewport.cpp
 		src/events/event_handler.cpp
-		src/score.cpp
-		src/raccoon.cpp
-		src/slot.cpp
+		src/events/mouse_handler.cpp
+		src/nodes/node.cpp
+		src/nodes/score.cpp
+		src/nodes/raccoon.cpp
+		src/nodes/slot.cpp
 		src/physics/geometry.cpp
 		src/graphics/sprite.cpp
 		src/graphics/text.cpp

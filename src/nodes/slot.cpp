@@ -1,4 +1,4 @@
-#include <slot.hpp>
+#include <nodes/slot.hpp>
 
 Slot::Slot(int cost, int health) : 
 	Slot(Point(), Size(), cost, health) {

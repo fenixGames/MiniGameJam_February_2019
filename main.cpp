@@ -4,10 +4,10 @@
 #include <scene.hpp>
 #include <viewport.hpp>
 #include <events/event_handler.hpp>
-#include <node.hpp>
-#include <score.hpp>
-#include <raccoon.hpp>
-#include <slot.hpp>
+#include <nodes/node.hpp>
+#include <nodes/score.hpp>
+#include <nodes/raccoon.hpp>
+#include <nodes/slot.hpp>
 #include <graphics/sprite.hpp>
 #include <graphics/text.hpp>
 

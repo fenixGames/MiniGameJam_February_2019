@@ -1,4 +1,4 @@
-#include <node.hpp>
+#include <nodes/node.hpp>
 
 Node::Node() : Node(Point(0, 0), Size(0, 0))
 {

@@ -2,7 +2,7 @@
 #define SCORE_HPP
 
 #include <physics/geometry.hpp>
-#include <node.hpp>
+#include <nodes/node.hpp>
 
 class Score : public Node {
 protected:

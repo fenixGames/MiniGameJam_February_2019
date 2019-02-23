@@ -1,4 +1,4 @@
-#include <score.hpp>
+#include <nodes/score.hpp>
 #include <graphics/text.hpp>
 
 Score::Score() : Score(Point(0, 0), Size(0, 0)){
