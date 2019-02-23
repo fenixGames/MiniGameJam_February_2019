@@ -13,4 +13,4 @@ public:
 	int getScore();
 	void addToScore(int points);
 };
-#endif SCORE_HPP
+#endif 
