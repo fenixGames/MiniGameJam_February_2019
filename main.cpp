@@ -6,6 +6,7 @@
 #include <event_handler.hpp>
 #include <node.hpp>
 #include <score.hpp>
+#include <raccoon.hpp>
 #include <graphics/sprite.hpp>
 #include <graphics/text.hpp>
 
@@ -27,7 +28,7 @@
 void
 addRaccoons(Scene * scene, SDL_Renderer *renderer, int amount) {
 	int startX = (MAIN_FIELD_WIDTH - amount * RACCOON_WIDTH) / 2;
-	Node * raccoonHolder = new Node(
+	RaccoonHolder * raccoonHolder = new RaccoonHolder(
 		Point(),
 		Size(amount * RACCOON_WIDTH, RACCOON_HEIGHT));
 	Sprite * raccoonSprite = new Sprite("resources/raccoon.png", Color(0xFFFFFF), renderer);
