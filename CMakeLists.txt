@@ -11,7 +11,6 @@ SET(
 		src/scene.cpp
 		src/viewport.cpp
 		src/event_handler.cpp
-		src/piece.cpp
 		src/physics/geometry.cpp
 		src/graphics/sprite.cpp
 		src/graphics/graphic.cpp
