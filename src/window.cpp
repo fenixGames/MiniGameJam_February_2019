@@ -3,6 +3,7 @@
 #include <window.hpp>
 #include <exceptions.hpp>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 Window::Window(int width, int height, std::string title) {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -14,6 +15,9 @@ Window::Window(int width, int height, std::string title) {
 		msg += IMG_GetError();
 		throw SDLException(msg.c_str());
 	}
+
+	if (TTF_Init() < 0)
+		throw SDLTTFException("TTF initialization failed");
 
 	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);

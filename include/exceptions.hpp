@@ -37,4 +37,12 @@ public:
 
 	virtual const char * what() const throw();
 };
+
+class SDLTTFException : public SDLException {
+public:
+	SDLTTFException(const char *);
+	SDLTTFException(const std::string);
+
+	virtual const char * what() const throw();
+};
 #endif

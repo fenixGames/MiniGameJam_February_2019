@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <stdexcept>
 
 #include <exceptions.hpp>
@@ -62,5 +63,19 @@ const char *
 SDLImageException::what() const throw()
 {
 	std::string msg = message + IMG_GetError();
+	return msg.c_str();
+}
+
+SDLTTFException::SDLTTFException(const char * msg) :
+	SDLException(msg) {
+}
+
+SDLTTFException::SDLTTFException(const std::string msg):
+	SDLException(msg){
+}
+
+const char *
+SDLTTFException::what() const throw() {
+	std::string msg = message + TTF_GetError();
 	return msg.c_str();
 }

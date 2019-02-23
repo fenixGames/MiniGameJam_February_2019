@@ -8,6 +8,7 @@ class Score : public Node {
 protected:
 	int score;
 public:
+	Score();
 	Score(const Point&, const Size&);
 
 	int getScore();

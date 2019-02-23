@@ -40,5 +40,8 @@ public:
 	void fillDimentions(SDL_Rect *);
 
 	void addChild(Node *);
+	std::list<Node *> * getChildren();
+
+	virtual void act();
 };
 #endif

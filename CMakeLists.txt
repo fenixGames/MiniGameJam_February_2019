@@ -16,19 +16,23 @@ SET(
 		src/score.cpp
 		src/physics/geometry.cpp
 		src/graphics/sprite.cpp
+		src/graphics/text.cpp
 		src/graphics/graphic.cpp
 )
 SET(INSTALL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 if (WIN32)
-	include_directories("C:/SDL2/include" "C:/SDL2-Image/include")
+	include_directories("C:/SDL2/include" "C:/SDL2-Image/include" "C:/SDL2_ttf/include")
 	find_library(SDL2_LIBRARY SDL2 PATHS "${CMAKE_CURRENT_SOURCE_DIR}/libSDL2")
 	find_library(SDL2_MAIN_LIBRARY SDL2main PATHS "${CMAKE_CURRENT_SOURCE_DIR}/libSDL2")
 	find_library(SDL2_IMAGE_LIBRARY SDL2_image PATHS "${CMAKE_CURRENT_SOURCE_DIR}/libSDL2")
+	find_library(SDL2_TTF_LIBRARY SDL2_ttf PATHS "${CMAKE_CURRENT_SOURCE_DIR}/libSDL2")
 	set(DLL_INSTALLED_LIBS 
 		"${CMAKE_CURRENT_SOURCE_DIR}/libSDL2/SDL2.dll"
 		"${CMAKE_CURRENT_SOURCE_DIR}/libSDL2/SDL2_image.dll"
+		"${CMAKE_CURRENT_SOURCE_DIR}/libSDL2/SDL2_ttf.dll"
+		"${CMAKE_CURRENT_SOURCE_DIR}/libSDL2/libfreetype-6.dll"
 		"${CMAKE_CURRENT_SOURCE_DIR}/libSDL2/libjpeg-9.dll"
 		"${CMAKE_CURRENT_SOURCE_DIR}/libSDL2/libpng16-16.dll"
 		"${CMAKE_CURRENT_SOURCE_DIR}/libSDL2/libtiff-5.dll"
@@ -48,6 +52,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY})
 target_link_libraries(${PROJECT_NAME} ${SDL2_MAIN_LIBRARY})
 target_link_libraries(${PROJECT_NAME} ${SDL2_IMAGE_LIBRARY})
+target_link_libraries(${PROJECT_NAME} ${SDL2_TTF_LIBRARY})
 
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${INSTALL_DIR})
 INSTALL(FILES ${DLL_INSTALLED_LIBS} DESTINATION ${INSTALL_DIR})

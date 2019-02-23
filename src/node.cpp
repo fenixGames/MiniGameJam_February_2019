@@ -16,7 +16,7 @@ Node::Node(const Point& startPoint, const Size& startSize)
 SDL_Texture *
 Node::getTexture()
 {
-	SDL_Texture * texture;
+	SDL_Texture * texture = NULL;
 
 	this->mutex.lock();
 	if (graphicResource != NULL)
@@ -60,5 +60,17 @@ Node::setSize(const Size& size) {
 void
 Node::addChild(Node * child) {
 	if (child != NULL)
+		child->parent = this;
 		this->children.push_back(child);
+}
+
+std::list<Node*>* 
+Node::getChildren()
+{
+	return &this->children;
+}
+
+void 
+Node::act()
+{
 }

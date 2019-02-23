@@ -53,8 +53,10 @@ Viewport::renderNodes(std::list<Node *> *listNodes) {
 
 		if (this->isNodePrintable(*itNodes)) {
 			SDL_Texture * texture = (*itNodes)->getTexture();
+			
 			if (texture != NULL)
 				SDL_RenderCopy(renderer, texture, NULL, &stretchRect);
+			this->renderNodes((*itNodes)->getChildren());
 		}
 	}
 	
