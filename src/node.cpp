@@ -56,3 +56,9 @@ void
 Node::setSize(const Size& size) {
 	this->size = size;
 }
+
+void
+Node::addChild(Node * child) {
+	if (child != NULL)
+		this->children.push_back(child);
+}

@@ -7,6 +7,7 @@
 #define NODE_HPP
 
 #include <mutex>
+#include <list>
 #include <SDL.h>
 
 #include <physics/geometry.hpp>
@@ -25,6 +26,7 @@ protected:
 	   calculate the absolute coordinates.
 	 */
 	Node * parent;
+	std::list<Node *> children;
 public:
 
 	Node();
@@ -36,5 +38,7 @@ public:
 	SDL_Texture * getTexture();
 	void setGraphicResource(Graphic *);
 	void fillDimentions(SDL_Rect *);
+
+	void addChild(Node *);
 };
 #endif
