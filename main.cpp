@@ -21,11 +21,16 @@ setEventHandlers(EventController * controller) {
 
 void
 addNodesToScene(Scene *scene, SDL_Renderer * renderer) {
-	Node inventory(Point(MAIN_FIELD_WIDTH, 0), Size(UI_WIDTH, UI_HEIGHT));
+	Node * inventory = new Node(Point(MAIN_FIELD_WIDTH, 0), Size(UI_WIDTH, UI_HEIGHT));
+	Node * background = new Node(Point(0, 0), Size(MAIN_FIELD_WIDTH, MAIN_FIELD_HEIGHT));
 
-	inventory.setGraphicResource(
+	inventory->setGraphicResource(
 		new Sprite("resources/ui.png", Color(0xFFFFFF), renderer));
-	scene->nodes.push_back(&inventory);
+	scene->nodes.push_back(inventory);
+
+	background->setGraphicResource(
+		new Sprite("resources/background.png", Color(0xFFFFFF), renderer));
+	scene->nodes.push_back(background);
 }
 
 int
@@ -41,12 +46,12 @@ main(int argc, char ** argv) {
 		Point(MAIN_FIELD_WIDTH, 0),
 		Size(UI_WIDTH, UI_HEIGHT),
 		win.getRenderer());
-	
+
 	setEventHandlers(&evController);
 	addNodesToScene(&first, win.getRenderer());
 
 	first.setRenderer(win.getRenderer());
-	
+
 	first.addViewport(&scene);
 	first.addViewport(&ui);
 	first.evController = &evController;
