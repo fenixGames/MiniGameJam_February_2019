@@ -21,11 +21,11 @@ setEventHandlers(EventController * controller) {
 
 void
 addNodesToScene(Scene *scene, SDL_Renderer * renderer) {
-	Node inventory(Point(MAIN_FIELD_WIDTH, 0), Size(UI_WIDTH, UI_HEIGHT));
+	Node * inventory = new Node(Point(MAIN_FIELD_WIDTH, 0), Size(UI_WIDTH, UI_HEIGHT));
 
-	inventory.setGraphicResource(
+	inventory->setGraphicResource(
 		new Sprite("resources/ui.png", Color(0xFFFFFF), renderer));
-	scene->nodes.push_back(&inventory);
+	scene->nodes.push_back(inventory);
 }
 
 int
