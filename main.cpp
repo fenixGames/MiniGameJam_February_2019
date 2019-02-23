@@ -4,6 +4,7 @@
 #include <scene.hpp>
 #include <viewport.hpp>
 #include <events/event_handler.hpp>
+#include <events/mouse_handler.hpp>
 #include <nodes/node.hpp>
 #include <nodes/score.hpp>
 #include <nodes/raccoon.hpp>
@@ -59,6 +60,13 @@ createInventary(Scene *scene, SDL_Renderer *renderer) {
 	Node * inventory = new Node(Point(MAIN_FIELD_WIDTH, 0), Size(UI_WIDTH, UI_HEIGHT));
 	Score * score = new Score(Point(0, 0), Size(100, 100));
 	Slot * tower = new Slot(Point(0, 100), SLOT_SIZE, 0, 100);
+	MouseDownHandler * mouseDownEventHandler = new MouseDownHandler(inventory);
+	MouseMotionHandler * mouseMotionEventHandler = new MouseMotionHandler(inventory);
+	MouseUpHandler * mouseUpEventHandler = new MouseUpHandler(inventory, scene->nodes.front());
+
+	scene->evController->addEventHandler(mouseDownEventHandler);
+	scene->evController->addEventHandler(mouseUpEventHandler);
+	scene->evController->addEventHandler(mouseMotionEventHandler);
 
 	tower->setGraphicResource(new Sprite("resources/tower.png", COLOR_WHITE, renderer));
 	//	score->setGraphicResource(new Text(std::string("arial.ttf"), Color(0x0), 24, renderer));
@@ -103,14 +111,16 @@ main(int argc, char ** argv) {
 			Size(UI_WIDTH, UI_HEIGHT),
 			win.getRenderer());
 
+
+		first.addViewport(&scene);
+		first.addViewport(&ui);
+		first.evController = &evController;
+
 		setEventHandlers(&evController);
 		addNodesToScene(&first, win.getRenderer());
 
 		first.setRenderer(win.getRenderer());
 
-		first.addViewport(&scene);
-		first.addViewport(&ui);
-		first.evController = &evController;
 
 		win.sceneList.push_back(&first);
 		win.start();

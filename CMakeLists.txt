@@ -17,6 +17,7 @@ SET(
 		src/nodes/score.cpp
 		src/nodes/raccoon.cpp
 		src/nodes/slot.cpp
+		src/nodes/draggable_node.cpp
 		src/physics/geometry.cpp
 		src/graphics/sprite.cpp
 		src/graphics/text.cpp
