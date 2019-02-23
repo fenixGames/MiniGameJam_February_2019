@@ -1,7 +1,5 @@
 cmake_minimum_required (VERSION 3.10)
-
-SET(PROJECT_NAME MiniGame_Jam_February_2019)
-project (${PROJECT_NAME})
+project (Werewolves_vs_Vampires)
 
 set (CMAKE_CXX_STANDARD 11)
 SET(
@@ -43,11 +41,11 @@ else (WIN32)
 
 endif (WIN32)
 
-add_executable(${PROJECT_NAME} ${SOURCES})
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY})
-target_link_libraries(${PROJECT_NAME} ${SDL2_MAIN_LIBRARY})
-target_link_libraries(${PROJECT_NAME} ${SDL2_IMAGE_LIBRARY})
+add_executable(Werewolves_vs_Vampires ${SOURCES})
+target_link_libraries(Werewolves_vs_Vampires ${SDL2_LIBRARY})
+target_link_libraries(Werewolves_vs_Vampires ${SDL2_MAIN_LIBRARY})
+target_link_libraries(Werewolves_vs_Vampires ${SDL2_IMAGE_LIBRARY})
 
-INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${INSTALL_DIR})
+INSTALL(TARGETS Werewolves_vs_Vampires DESTINATION ${INSTALL_DIR})
 INSTALL(FILES ${DLL_INSTALLED_LIBS} DESTINATION ${INSTALL_DIR})
 INSTALL(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/resources" DESTINATION ${INSTALL_DIR})

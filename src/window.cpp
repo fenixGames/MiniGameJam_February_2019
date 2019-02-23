@@ -47,8 +47,7 @@ Window::start() {
 
 	while ((currentScene = getCurrentScene()) != NULL)	{
 		currentScene->draw();
-		if (currentScene->evController != NULL)
-			currentScene->evController->handleEvents();
+		currentScene->evController->handleEvents();
 
 		SDL_Delay(200);
 	}
@@ -57,7 +56,7 @@ Window::start() {
 Scene *
 Window::getCurrentScene()
 {
-	while (itScenes != sceneList.end() && (*itScenes)->isFinished())
+	while ((*itScenes)->isFinished() && itScenes != sceneList.end())
 		itScenes++;
 	if (itScenes != sceneList.end())
 		return *itScenes;
