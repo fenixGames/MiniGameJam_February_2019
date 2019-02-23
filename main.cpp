@@ -16,9 +16,8 @@ main(int argc, char ** argv) {
 	Window win(SCREEN_WIDTH, SCREEN_HEGHT, "MiniGame Jam February 2019");
 	Scene first;
 	EventController evController;
-	Viewport
 
-		setEventHandlers(&evController);
+	setEventHandlers(&evController);
 
 	first.setRenderer(win.getRenderer());
 	first.evController = &evController;
