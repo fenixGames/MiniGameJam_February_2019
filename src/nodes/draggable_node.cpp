@@ -6,6 +6,7 @@ DraggableNode::DraggableNode() :
 
 DraggableNode::DraggableNode(const Point& position, const Size& size) :
 	Node(position, size) {
+	this->isDragged = false;
 }
 
 void
