@@ -90,7 +90,7 @@ addNodesToScene(Scene *scene, SDL_Renderer * renderer) {
 	background->setGraphicResource(
 		new Sprite("resources/background.png", COLOR_WHITE, renderer));
 	scene->nodes.push_back(background);
-	scene->nodes.push_back(turtleQueen);
+	background->addChild(turtleQueen);
 
 	addRaccoons(scene, renderer, 10);
 	createInventary(scene, renderer);
