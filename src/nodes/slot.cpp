@@ -6,7 +6,7 @@ Slot::Slot(int cost, int health) :
 }
 
 Slot::Slot(const Point& position, const Size& size, const int cost, const int health) :
-	Node(position, size) {
+	DraggableNode(position, size) {
 	this->cost = cost;
 	this->health = health;
 }
@@ -23,4 +23,12 @@ Slot::getHealth() {
 
 void
 Slot::act() {
+}
+
+Slot *
+Slot::clone() {
+	Slot * slot = new Slot(this->position, this->size, this->cost, this->health);
+	slot->setGraphicResource(this->graphicResource);
+
+	return slot;
 }
